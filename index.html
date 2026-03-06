@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NextPick</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f0ff;
+text-align:center;
+margin:0;
+animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+header{
+background:linear-gradient(135deg,#6a0dad,#8a2be2);
+color:white;
+padding:20px;
+}
+
+nav{
+background:#8a2be2;
+padding:10px;
+}
+
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+padding:8px 15px;
+border-radius:20px;
+transition:0.3s;
+}
+
+nav a:hover{
+background:white;
+color:#6a0dad;
+}
+
+section{
+padding:20px;
+background:white;
+width:85%;
+margin:auto;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+footer{
+background:#6a0dad;
+color:white;
+padding:10px;
+margin-top:20px;
+font-size:14px;
+}
+
+/* CAPTCHA */
+
+#website{
+display:none;
+}
+
+#captchaBox{
+margin-top:150px;
+background:white;
+width:320px;
+margin-left:auto;
+margin-right:auto;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* BUTTON */
+
+button{
+padding:10px 20px;
+background:#6a0dad;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:25px;
+font-weight:bold;
+margin-top:10px;
+}
+
+button:hover{
+background:#8a2be2;
+}
+
+/* GALLERY */
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
+}
+
+.productCard{
+background:white;
+width:200px;
+padding:10px;
+border-radius:15px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+}
+
+.productCard img{
+width:100%;
+border-radius:10px;
+cursor:pointer;
+}
+
+#cart{
+margin-top:15px;
+font-weight:bold;
+color:#6a0dad;
+}
+
+/* MOBILE */
+
+@media (max-width:600px){
+
+.gallery{
+flex-direction:column;
+align-items:center;
+}
+
+section{
+width:95%;
+}
+
+}
+
+</style>
+
+<script>
+
+let num1=Math.floor(Math.random()*10)+1;
+let num2=Math.floor(Math.random()*10)+1;
+
+let cart=0;
+
+function generateCaptcha(){
+document.getElementById("question").innerHTML=
+"Verify you are human: "+num1+" + "+num2;
+}
+
+function checkCaptcha(){
+
+let answer=document.getElementById("captchaInput").value;
+
+if(answer==num1+num2){
+
+document.getElementById("captchaBox").style.display="none";
+document.getElementById("website").style.display="block";
+
+}
+
+else{
+alert("Wrong answer. Try again.");
+}
+
+}
+
+function addToCart(){
+
+cart++;
+document.getElementById("cart").innerHTML="Cart Items: "+cart;
+
+}
+
+</script>
+
+</head>
+
+<body onload="generateCaptcha()">
+
+<!-- CAPTCHA -->
+
+<div id="captchaBox">
+
+<h2>Human Verification</h2>
+
+<p id="question"></p>
+
+<input type="text" id="captchaInput" placeholder="Enter answer">
+
+<br><br>
+
+<button onclick="checkCaptcha()">Enter Website</button>
+
+</div>
+
+<!-- WEBSITE -->
+
+<div id="website">
+
+<header>
+
+<h1>NextPick</h1>
+<p>Your reselling shop for clothes, food, and supplies</p>
+
+</header>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#">Products</a>
+<a href="#">Contact</a>
+
+</nav>
+
+<section>
+
+<h2>Welcome</h2>
+
+<p>Welcome to NextPick! Browse our products below.</p>
+
+</section>
+
+
+
+<!-- PRODUCT SECTION -->
+
+<section>  <p>Welcome to NextPick! We offer a variety of clothes, foods, and daily supplies. Browse our shop and discover great deals.</p> <h3>Products</h3> <p>Clothes - Price: ₱100-₱300</p> <p>Food - Price: ₱30-₱100</p> <p>Supplies - Price: ₱20-₱100</p> </section>
+
+<div id="cart">Cart Items: 0</div>
+
+<div class="gallery">
+
+<div class="productCard">
+<a href="https://www.foodnetwork.com/recipes/photos/easy-dinner-recipes">
+<img src="" alt="Product 1">
+</a>
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="productCard">
+<a href="https://www.google.com/imgres?q=fih%20shirt&imgurl=https%3A%2F%2Fp16-oec-general-useast8.ttcdn-us.com%2Ftos-useast8-i-rt0ujvrtvp-tx2%2Fd6445d5a0b9a4580a7951ccf7a03c1ce~tplv-fhlh96nyum-resize-webp%3A800%3A800.webp%3Fdr%3D12186%26t%3D555f072d%26ps%3D933b5bde%26shp%3D6ce186a1%26shcp%3De1be8f53%26idc%3Duseast5%26from%3D1826719393&imgrefurl=https%3A%2F%2Fshop.tiktok.com%2Fus%2Fpdp%2Ffih-cotton-unisex-t-shirt-round-neck-sizes-s-5xl-comfortable-fit%2F1732260354472579986&docid=APsI0j8CCbU_nM&tbnid=lvuZBUvOq_DuwM&vet=12ahUKEwiFt5PV8YqTAxUofPUHHYAaDr8QnPAOegQIFxAB..i&w=800&h=800&hcb=2&itg=1&ved=2ahUKEwiFt5PV8YqTAxUofPUHHYAaDr8QnPAOegQIFxAB">
+<img src="" alt="Product 2">
+</a>
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<div class="productCard">
+<a href="https://www.google.com/imgres?q=book%20and%20pencil%20irl&imgurl=https%3A%2F%2Ft4.ftcdn.net%2Fjpg%2F01%2F05%2F96%2F85%2F360_F_105968515_SIDmMtC3mUJWTdQEdxXps5FPlGJ5bX8t.jpg&imgrefurl=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dsketch%2Bbook%2Bwith%2Bpencils&docid=sdNvuTsUiAJsfM&tbnid=xeqNubK6zPU3HM&vet=12ahUKEwiP1v3u8YqTAxVgh68BHVcZI1IQnPAOegQIFhAB..i&w=540&h=360&hcb=2&ved=2ahUKEwiP1v3u8YqTAxVgh68BHVcZI1IQnPAOegQIFhAB">
+<img src="" alt="Product 3">
+</a>
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+<footer>
+
+<p>Created by Quiel Eriss Barlis</p>
+
+</footer>
+
+
+
+</div>
+
+</div>
+
+</body>
+</html>
